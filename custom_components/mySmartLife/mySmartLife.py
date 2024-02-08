@@ -10,24 +10,18 @@ class mySmartLife:
         self._acces_key = accessKey
         self._mqEndPoint = mqEndPoint
 
-    def call_message(msg):
-        import json
-        print(f"---\nexample(1) receive: {msg}")
-        msgJson = json.loads(msg)
-        if msgJson.get('productKey') is not None:
-            productKey = msgJson.get('productKey')
-            if ( productKey == "qgwcxxws"): # switch
-                print("oupi")
 
-    def subscribe(self):
-        open_pulsar = TuyaOpenPulsar(
+    def subscribe(self, functionName):
+
+        self.open_pulsar = TuyaOpenPulsar(
             self._access_id, self._acces_key, self._mqEndPoint, TuyaCloudPulsarTopic.PROD
         )
         # Add Message Queue listener
-        open_pulsar.add_message_listener(call_message)
+        self.open_pulsar.add_message_listener(functionName)
 
         # Start Message Queue
-        open_pulsar.start()
+        self.open_pulsar.start()
+        print("start listen")
 
     def unsubcribe(self):
-        open_pulsar.stop()
+        self.open_pulsar.stop()

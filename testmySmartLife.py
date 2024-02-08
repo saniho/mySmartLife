@@ -1,5 +1,6 @@
 def testMySmartLife():
   from custom_components.mySmartLife import mySmartLife, sensorMySmartLife
+  from custom_components.mySmartLife.manager import call_message
 
   _mySmartLife = mySmartLife.mySmartLife()
 
@@ -11,20 +12,7 @@ def testMySmartLife():
   accessKey = mon_conteneur["SMARTLIFE"]['ACCESS_KEY']
   mqEndPoint = mon_conteneur["SMARTLIFE"]['MQ_ENDPOINT']
   _mySmartLife.setConfig( accessId, accessKey, mqEndPoint )
-  _mySmartLife.subscribe()
-
-  print(1/0)
-
-
-  print(_mySmartLife.getMoney())
-  sAM = sensorMySmartLife.manageSensorState()
-  sAM.init(_mySmartLife )
-  state, attributes = sAM.getstatusMoney()
-  sensorMySmartLife.logSensorState( attributes )
-  state, attributes = sAM.getstatusTotalMoney()
-  sensorMySmartLife.logSensorState( attributes )
-  state, attributes = sAM.getstatusData()
-  sensorMySmartLife.logSensorState( attributes )
+  _mySmartLife.subscribe(call_message)
 
 
 testMySmartLife()
