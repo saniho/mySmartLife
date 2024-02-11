@@ -1,6 +1,5 @@
 def testMySmartLife():
   from custom_components.mySmartLife import mySmartLife, sensorMySmartLife
-  from custom_components.mySmartLife.manager import call_message
 
   _mySmartLife = mySmartLife.mySmartLife()
 
@@ -11,7 +10,8 @@ def testMySmartLife():
   accessKey = mon_conteneur["SMARTLIFE"]['ACCESS_KEY']
   mqEndPoint = mon_conteneur["SMARTLIFE"]['MQ_ENDPOINT']
   _mySmartLife.setConfig( accessId, accessKey, mqEndPoint )
-  _mySmartLife.subscribe(call_message)
+  obj = "Mon objet"
+  _mySmartLife.subscribe(obj)
 
 
 testMySmartLife()

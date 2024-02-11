@@ -5,6 +5,6 @@
     "version": "1.0.0.0",
     "requirements": ["tuya-connector-python"],
     "integration_type": "entity",
-    "dependencies": ["tuya-connector-python"],
+    "dependencies": [],
     "codeowners": []
 }
