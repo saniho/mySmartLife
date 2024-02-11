@@ -3,8 +3,8 @@
     "name": "mySmartLife sensor",
     "documentation": "",
     "version": "1.0.0.0",
-    "requirements": [
-    ],
-    "dependencies": [],
+    "requirements": ["tuya-connector-python"],
+    "integration_type": "entity",
+    "dependencies": ["tuya-connector-python"],
     "codeowners": []
 }

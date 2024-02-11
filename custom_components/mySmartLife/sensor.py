@@ -24,7 +24,6 @@ from .const import (
     DOMAIN,
     __VERSION__,
     __name__,
-    SCAN_INTERVAL_http,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -37,188 +36,38 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     }
 )
 
-from . import apiEarnApp, sensorApiEarnApp
+from . import mySmartLife
 
-class myEarnApp:
-    def __init__(self, token, _update_interval):
-        self._lastSynchro = None
-        self._update_interval = _update_interval
-        self._token = token
-        self._myEarnApp = apiEarnApp.apiEarnApp()
-        pass
+_LOGGER.setLevel(10)
+_mySmartLife = mySmartLife.mySmartLife()
+listSensors = []
 
-
-    def update(self,):
-        import datetime
-
-        courant = datetime.datetime.now()
-        if ( self._lastSynchro == None ) or \
-            ( (self._lastSynchro + self._update_interval) < courant ):
-            _LOGGER.warning("-update possible- on lance")
-            self._myEarnApp.setToken( self._token )
-            self._myEarnApp.getInfo()
-            self._lastSynchro = datetime.datetime.now()
-
-    # revoir recupearation valeur
-    def getmyEarnApp(self):
-        return self._myEarnApp
-
-    def getMoney(self):
-        return self._myEarnApp.getMoney()
-
-    def getTotalMoney(self):
-        return self._myEarnApp.getTotalMoney()
-
-    def getData(self):
-        return self._myEarnApp.getData()
-
+def call_message(msg):
+    import json
+    import datetime
+    #print(f"---\nexample(1) receive: {msg}")
+    msgJson = json.loads(msg)
+    if msgJson.get('productKey') is not None:
+        productKey = msgJson.get('productKey')
+        if msgJson.get("devId") is not None:
+            devId = msgJson.get("devId")
+        if (productKey == "qgwcxxws"):  # switch
+            if ( msgJson.get("status")):
+                statusJson = msgJson.get("status")
+                _LOGGER.debug( "%s %s"%(devId, statusJson[0]))
+                sensorName = "%s %s"%(devId, statusJson[0]["switch_mode1"])
+                #if ( sensorName ) not in listSensors:
+                #    add_entities([infoSensor_qgwcxxws(session, sensorName)], True)
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the platform."""
     name = config.get(CONF_NAME)
-    update_interval = config.get(CONF_SCAN_INTERVAL, SCAN_INTERVAL)
-    update_interval_http = SCAN_INTERVAL_http
-    try:
-        token = config.get(CONF_TOKEN)
-        session = []
-    except :
-        _LOGGER.exception("Could not run my apiMaree Extension miss argument ?")
-        return False
-    myEarn = myEarnApp( token, update_interval )
-    myEarn.update()
-    add_entities([infoEanAppSensorMoney(session, name, update_interval, myEarn )], True)
-    add_entities([infoEanAppSensorTotalMoney(session, name, update_interval, myEarn )], True)
-    add_entities([infoEanAppSensorData(session, name, update_interval, myEarn )], True)
 
-class infoEanAppSensorMoney(Entity):
-    """."""
+    accessId = "tkpy8gyab2mgidrn9wky"
+    accessKey = "9d1862bb04ea49f4a9eccb81742c3d8d"
+    mqEndPoint = "wss://mqe.tuyaeu.com:8285/"
+    _mySmartLife.setConfig(accessId, accessKey, mqEndPoint)
 
-    def __init__(self, session, name, interval, myEarn):
-        """Initialize the sensor."""
-        self._session = session
-        self._name = name
-        self._myEarn = myEarn
-        self._attributes = None
-        self._state = None
-        self.update = Throttle(interval)(self._update)
-        self._sAM = sensorApiEarnApp.manageSensorState()
-        self._sAM.init( self._myEarn )
+    obj = "Mon objet"
+    _mySmartLife.subscribe(obj)
 
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return "myEarnApp"
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement of this entity, if any."""
-        return "$"
-
-    def _update(self):
-        """Update device state."""
-        self._myEarn.update()
-        self._state, self._attributes = self._sAM.getstatusMoney()
-
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
-        return self._attributes
-
-    @property
-    def icon(self):
-        """Icon to use in the frontend."""
-        return ICON
-
-class infoEanAppSensorTotalMoney(Entity):
-    """."""
-
-    def __init__(self, session, name, interval, myEarn):
-        """Initialize the sensor."""
-        self._session = session
-        self._name = name
-        self._myEarn = myEarn
-        self._attributes = None
-        self._state = None
-        self.update = Throttle(interval)(self._update)
-        self._sAM = sensorApiEarnApp.manageSensorState()
-        self._sAM.init( self._myEarn )
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return "myEarnApp.totalMoney"
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement of this entity, if any."""
-        return "$"
-
-    def _update(self):
-        """Update device state."""
-        self._myEarn.update()
-        self._state, self._attributes = self._sAM.getstatusTotalMoney()
-
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
-        return self._attributes
-
-    @property
-    def icon(self):
-        """Icon to use in the frontend."""
-        return ICON
-
-
-class infoEanAppSensorData(Entity):
-    """."""
-
-    def __init__(self, session, name, interval, myEarn):
-        """Initialize the sensor."""
-        self._session = session
-        self._name = name
-        self._myEarn = myEarn
-        self._attributes = None
-        self._state = None
-        self.update = Throttle(interval)(self._update)
-        self._sAM = sensorApiEarnApp.manageSensorState()
-        self._sAM.init( self._myEarn )
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return "myEarnApp.data"
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement of this entity, if any."""
-        return ""
-
-    def _update(self):
-        """Update device state."""
-        self._myEarn.update()
-        self._state, self._attributes = self._sAM.getstatusData()
-
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
-        return self._attributes
-
-    @property
-    def icon(self):
-        """Icon to use in the frontend."""
-        return ICON
