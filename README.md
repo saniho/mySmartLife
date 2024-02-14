@@ -6,6 +6,8 @@ le click, le double_click n'arrivait pas au bon moment, et impossible de déclen
 
 Donc voici une petite contribution pour gérer cela.
 
+Elle repose sur les messages et non sur l'API.
+
 Les sensors sont créés automatiquement, 
 
 exemple : bouton de type : qgwcxxws un click est reçu, met à jour le sensor et 2 secondes après remet le statut en unknown, ce qui permet de recevoir les nouveaux events.
