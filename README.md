@@ -23,6 +23,8 @@ config yaml
   ACCESS_KEY: xxx
   MQ_ENDPOINT: wss://mqe.tuyaeu.com:8285/
 ```
+MQ_ENDPOINT : si votre tuya utilise le datacenter européen
+
 ACCESS_ID & ACCESS_KEY à récupérer sur votre acces https://iot.tuya.com/
 
 pour les obtenir, vous devez avoir un projet( à créé ici : https://iot.tuya.com/cloud/ de type smart home )
@@ -35,6 +37,5 @@ il faudra ensuite créé une subscription dans message service :
 
 ![img_1.png](img_1.png)
 
-MQ_ENDPOINT : si votre tuya utilise le datacenter européen
 
 ![](img/token.png)
