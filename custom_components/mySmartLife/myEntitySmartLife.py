@@ -20,7 +20,7 @@ class myEntitySmartLife(Entity):
     def __init__(self, name, value):
         """Initialize the sensor."""
         self._name = name
-        self._timeout = 2 # secondes
+        self._timeout = 2 # seconde
         status_counts = {}
         status_counts["version"] = __VERSION__
         status_counts["last_update"] = "%s"%(datetime.datetime.now())
