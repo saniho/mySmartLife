@@ -24,6 +24,9 @@ from .const import (
     DOMAIN,
     __VERSION__,
     __name__,
+    CONF_ID,
+    CONF_KEY,
+    CONF_ENDPOINTKEY,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -38,7 +41,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 
 from . import mySmartLife
 
-_LOGGER.setLevel(10)
 _mySmartLife = mySmartLife.mySmartLife()
 listSensors = []
 
@@ -46,9 +48,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the platform."""
     name = config.get(CONF_NAME)
 
-    accessId = "tkpy8gyab2mgidrn9wky"
-    accessKey = "9d1862bb04ea49f4a9eccb81742c3d8d"
-    mqEndPoint = "wss://mqe.tuyaeu.com:8285/"
+    accessId = CONF_ID
+    accessKey = CONF_KEY
+    mqEndPoint = CONF_ENDPOINTKEY
     _mySmartLife.setConfig(accessId, accessKey, mqEndPoint)
 
     _mySmartLife.subscribe(listSensors, hass, add_entities)
