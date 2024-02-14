@@ -35,7 +35,9 @@ ICON = "mdi:package-variant-closed"
 SCAN_INTERVAL = timedelta(seconds=1800)
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
-        vol.Required(CONF_TOKEN): cv.string,
+        vol.Required(CONF_ID): cv.string,
+        vol.Required(CONF_KEY): cv.string,
+        vol.Required(CONF_ENDPOINTKEY): cv.string,
     }
 )
 
@@ -48,9 +50,9 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the platform."""
     name = config.get(CONF_NAME)
 
-    accessId = CONF_ID
-    accessKey = CONF_KEY
-    mqEndPoint = CONF_ENDPOINTKEY
+    accessId = config.get(CONF_ID)
+    accessKey = config.get(CONF_KEY)
+    mqEndPoint = config.get(CONF_ENDPOINTKEY)
     _mySmartLife.setConfig(accessId, accessKey, mqEndPoint)
 
     _mySmartLife.subscribe(listSensors, hass, add_entities)
