@@ -21,12 +21,15 @@ class myEntitySmartLife(Entity):
         """Initialize the sensor."""
         self._name = name
         self._timeout = 2 # seconde
+        self._attributes = {}
+        self._attributes.update(self.getDefaultStatusCounts())
+        self._state = value
+    def getDefaultStatusCounts(self):
         status_counts = {}
         status_counts["version"] = __VERSION__
         status_counts["last_update"] = "%s"%(datetime.datetime.now())
-        self._attributes = {}
-        self._attributes.update(status_counts)
-        self._state = value
+        return status_counts
+
     @property
     def unique_id(self):
         "Return a unique_id for this entity."
@@ -56,11 +59,8 @@ class myEntitySmartLife(Entity):
         timer.start()
     def _update(self):
         """Update device state."""
-        status_counts = {}
-        status_counts["version"] = __VERSION__
-        status_counts["last_update"] = "%s" %(datetime.datetime.now())
         self._attributes = {}
-        self._attributes.update(status_counts)
+        self._attributes.update(self.getDefaultStatusCounts())
         self.async_write_ha_state()
     @property
     def extra_state_attributes(self):
