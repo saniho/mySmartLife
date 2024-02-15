@@ -15,6 +15,7 @@ from .const import (  # isort:skip
 )
 
 _LOGGER = logging.getLogger(__name__)
+
 class mySmartLifeFlowHandler(  # type: ignore[call-arg]
     config_entries.ConfigFlow, domain=DOMAIN
 ):
