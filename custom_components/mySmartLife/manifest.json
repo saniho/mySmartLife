@@ -4,6 +4,7 @@
   "documentation": "",
   "version": "1.0.0.0",
   "requirements": ["tuya-connector-python"],
+  "config_flow": true,
   "dependencies": [],
   "codeowners": []
 }
