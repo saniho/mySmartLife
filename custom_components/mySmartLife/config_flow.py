@@ -47,7 +47,7 @@ class mySmartLifeFlowHandler(  # type: ignore[call-arg]
             {
                 vol.Required(CONF_ID, default=user_input.get(CONF_ID, conf_id)): str,
                 vol.Required(CONF_KEY, default=user_input.get(CONF_KEY, conf_key)): str,
-                vol.Required(CONF_ENDPOINTKEY, default=user_input.get(CONF_KEY, conf_endpointkey)): str,
+                vol.Required(CONF_ENDPOINTKEY, default=user_input.get(CONF_ENDPOINTKEY, conf_endpointkey)): str,
             }
         )
         return self.async_show_form(
