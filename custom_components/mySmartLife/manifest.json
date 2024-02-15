@@ -1,15 +1,13 @@
 {
-  "domain": "mySmartLife",
-  "name": "mySmartLife sensor",
-  "documentation": "https://github.com/saniho/mySmartLife",
-  "issue_tracker": "https://github.com/saniho/apiEnedis/issues",
-  "iot_class": "cloud_polling",
+  "codeowners":  ["@saniho"]
   "config_flow": true,
-  "version": "1.0.0.0",
-  "requirements": ["tuya-connector-python"],
-  "integration_type": "entity",
   "dependencies": [],
-  "codeowners":  [
-    "@saniho"
-  ]
+  "documentation": "https://github.com/saniho/mySmartLife",
+  "domain": "mySmartLife",
+  "iot_class": "cloud_polling",
+  "integration_type": "entity",
+  "issue_tracker": "https://github.com/saniho/apiEnedis/issues",
+  "name": "mySmartLife sensor",
+  "requirements": ["tuya-connector-python"],
+  "version": "1.0.0.0",
 }
