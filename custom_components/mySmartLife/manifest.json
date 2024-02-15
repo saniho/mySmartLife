@@ -1,5 +1,5 @@
 {
-  "codeowners":  ["@saniho"]
+  "codeowners":  ["@saniho"],
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/saniho/mySmartLife",
@@ -9,5 +9,5 @@
   "issue_tracker": "https://github.com/saniho/apiEnedis/issues",
   "name": "mySmartLife sensor",
   "requirements": ["tuya-connector-python"],
-  "version": "1.0.0.0",
+  "version": "1.0.0.0"
 }
