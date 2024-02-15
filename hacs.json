@@ -1,4 +1,4 @@
 {
-  "name": "mySmartLife sensor",
-  "homeassistant": "2024.1.0"
+  "name": "mySmratLife sensor",
+  "render_readme": true
 }
