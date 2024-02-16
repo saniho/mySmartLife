@@ -10,5 +10,6 @@
   "dependencies": [],
   "codeowners": [
     "@saniho"
-  ]
+  ],
+  "topics": ["homeassistant", "intégration", "zigbee"]
 }
