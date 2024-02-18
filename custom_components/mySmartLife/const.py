@@ -13,3 +13,6 @@ __name__ = "mySmartLife"
 CONF_ID = "ACCESS_ID"
 CONF_KEY = "ACCESS_KEY"
 CONF_ENDPOINTKEY = "MQ_ENDPOINT"
+
+
+PLATFORMS = ["sensor"]
