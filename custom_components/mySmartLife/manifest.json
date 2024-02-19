@@ -5,7 +5,7 @@
   "issue_tracker": "https://github.com/saniho/mySmartLife/issues",
   "iot_class": "cloud_polling",
   "config_flow": true,
-  "version": "1.0.1.2",
+  "version": "1.0.2",
   "requirements": ["tuya-connector-python"],
   "dependencies": [],
   "codeowners": [

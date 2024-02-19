@@ -61,6 +61,7 @@ from .const import (  # isort:skip
 )
 
 _LOGGER = logging.getLogger(__name__)
+_LOGGER.setLevel(10)
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up smartlife_conf from legacy config file."""
@@ -85,6 +86,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
 
     for platform in PLATFORMS:
+        _LOGGER.info(f"smartlife_conf data {platform}")
         hass.async_create_task(
             hass.config_entries.async_forward_entry_setup(entry, platform)
         )

@@ -61,7 +61,7 @@ class mySmartLifeFlowHandler(  # type: ignore[call-arg]
         if user_input is None:
             return self._show_setup_form(user_input, self._errors)
 
-        conf_id = user_input[CONF_ID]  # Might be a city name or a postal code
+        conf_id = user_input[CONF_ID]
         conf_key = user_input.get(CONF_KEY)
         conf_endpointkey = user_input.get(CONF_ENDPOINTKEY)
 
