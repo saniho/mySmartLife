@@ -6,10 +6,11 @@
   "iot_class": "cloud_polling",
   "config_flow": true,
   "version": "1.0.2",
-  "requirements": ["tuya-connector-python"],
+  "requirements": [
+    "tuya-connector-python"
+  ],
   "dependencies": [],
   "codeowners": [
     "@saniho"
-  ],
-  "topics": ["homeassistant", "intégration", "zigbee"]
+  ]
 }
