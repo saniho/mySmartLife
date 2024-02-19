@@ -1,0 +1,28 @@
+{
+    "title": "mySmartLife",
+    "config": {
+        "step": {
+            "user": {
+                "data": {
+                    "ACCESS_ID": "ACCESS_ID",
+                    "ACCESS_KEY": "ACCESS_KEY",
+                    "MQ_ENDPOINT": "MQ_ENDPOINT"
+                },
+                "title": "mySmartLife Configuration"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "description": "Personnalisez le fonctionnement de l'intégration",
+                "data": {
+                    "ACCESS_ID": "ACCESS_ID",
+                    "ACCESS_KEY": "ACCESS_KEY",
+                    "MQ_ENDPOINT": "MQ_ENDPOINT"
+                },
+                "title": "mySmartLife Options"
+            }
+        }
+    }
+}

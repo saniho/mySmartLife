@@ -1,0 +1,15 @@
+{
+  "domain": "apiSmartLife",
+  "name": "mySmartLife sensor",
+  "codeowners": [
+    "@saniho"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/saniho/mySmartLife/",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/saniho/mySmartLife/issues",
+  "requirements": [
+    "tuya-connector-python"
+  ],
+  "version": "1.0.2"
+}
