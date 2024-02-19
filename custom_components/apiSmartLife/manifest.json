@@ -1,5 +1,5 @@
 {
-  "domain": "mySmartLife",
+  "domain": "apiSmartLife",
   "name": "mySmartLife sensor",
   "codeowners": [
     "@saniho"
