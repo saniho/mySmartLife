@@ -1,5 +1,7 @@
 """ Constants """
 
+from homeassistant.const import Platform
+
 ISSUE_URL="https://github.com/saniho/mySmartLife/issues"
 
 DOMAIN = "mySmartLife"
@@ -15,4 +17,4 @@ CONF_KEY = "ACCESS_KEY"
 CONF_ENDPOINTKEY = "MQ_ENDPOINT"
 
 
-PLATFORMS = ["sensor"]
+PLATFORMS = [Platform.SENSOR]
