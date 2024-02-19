@@ -1,7 +1,5 @@
 {
-    "domain": "mySmartLife",
     "name": "mySmartLife",
-    "url": "https://github.com/saniho/mySmartLife",
-    "maintainer": "saniho",
-    "description": "mySmartLife sensor"
-}
+    "url": "https://github.com/saniho/mySmartLife/",
+    "maintainer": "saniho"
+  }

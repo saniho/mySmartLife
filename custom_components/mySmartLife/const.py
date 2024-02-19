@@ -4,7 +4,7 @@ ISSUE_URL="https://github.com/saniho/mySmartLife/issues"
 
 DOMAIN = "mySmartLife"
 
-__VERSION__ = "1.0.0.0"
+__VERSION__ = "1.0.2"
 
 __name__ = "mySmartLife"
 
@@ -13,3 +13,6 @@ __name__ = "mySmartLife"
 CONF_ID = "ACCESS_ID"
 CONF_KEY = "ACCESS_KEY"
 CONF_ENDPOINTKEY = "MQ_ENDPOINT"
+
+
+PLATFORMS = ["sensor"]
