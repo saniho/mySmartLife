@@ -15,6 +15,7 @@
     "options": {
         "step": {
             "init": {
+                "description": "Personnalisez le fonctionnement de l'intégration",
                 "data": {
                     "ACCESS_ID": "ACCESS_ID",
                     "ACCESS_KEY": "ACCESS_KEY",
