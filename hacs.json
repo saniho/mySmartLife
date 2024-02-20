@@ -1,10 +1,10 @@
 {
   "name": "mySmartLife sensor",
+  "filename": "mySmartLife.zip",
   "content_in_root": false,
   "domains": [],
   "homeassistant": "2021.09",
   "persistent_directory": "mySmartLife",
   "zip_release": true,
-  "render_readme": true,
-  "filename": "mySmartLife.zip"
+  "render_readme": true
 }
