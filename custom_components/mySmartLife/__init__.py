@@ -62,7 +62,6 @@ from .const import (  # isort:skip
 
 _LOGGER = logging.getLogger(__name__)
 _LOGGER.setLevel(10)
-
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up smartlife_conf from legacy config file."""
     conf = config.get(DOMAIN)
