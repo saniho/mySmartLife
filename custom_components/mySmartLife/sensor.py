@@ -22,6 +22,7 @@ from homeassistant.util.dt import now, parse_date
 
 from .const import (
     DOMAIN,
+    PLATFORMS,
     __VERSION__,
     __name__,
     CONF_ID,
