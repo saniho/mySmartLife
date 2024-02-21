@@ -1,5 +1,6 @@
 {
   "name": "mySmartLife sensor",
+  "filename": "mySmartLife.zip",
   "content_in_root": false,
   "domains": [],
   "homeassistant": "2021.09",
