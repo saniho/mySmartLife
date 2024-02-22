@@ -37,6 +37,7 @@ class mySmartLifeFlowHandler(  # type: ignore[call-arg]
     def _show_setup_form(self, user_input=None, errors=None):
         """Show the setup form to the user."""
 
+        _LOGGER.info(f"user_input _show_setup_form {user_input}")
         if user_input is None:
             user_input = {}
         conf_id = ""
@@ -58,6 +59,7 @@ class mySmartLifeFlowHandler(  # type: ignore[call-arg]
 
     async def async_step_user(self, user_input=None):  # pylint: disable=unused-argument
         self._errors = {}
+        _LOGGER.info(f"user_input async_step_user {user_input}")
         if user_input is None:
             return self._show_setup_form(user_input, self._errors)
 
@@ -93,6 +95,7 @@ class mySmartLifeOptionsFlowHandler(config_entries.OptionsFlow):
 
     async def async_step_init(self, user_input=None):
         """Handle options flow."""
+        _LOGGER.info(f"user_input async_step_init {user_input}")
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
         conf_id = "ACCESS_ID"

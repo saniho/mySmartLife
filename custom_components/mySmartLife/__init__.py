@@ -112,4 +112,15 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def _async_update_listener(hass: HomeAssistant, entry: ConfigEntry):
     """Handle options update."""
+    _LOGGER.info("_async_update_listener ")
     await hass.config_entries.async_reload(entry.entry_id)
+
+async def options_updated_listener(hass, entry):
+    """Handle options update. suite modification options"""
+    _LOGGER.info("options_updated_listener ")
+    _LOGGER.info("options_updated_listener - done -- ")
+
+
+async def async_set_options(self):
+    """Set options for entry."""
+    _LOGGER.info(f"async_set_options - proc -- {self.entry.options}")
