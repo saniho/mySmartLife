@@ -6,7 +6,7 @@ ISSUE_URL="https://github.com/saniho/mySmartLife/issues"
 
 DOMAIN = "mySmartLife"
 
-__VERSION__ = "1.0.2"
+__VERSION__ = "1.0.4"
 
 __name__ = "mySmartLife"
 
