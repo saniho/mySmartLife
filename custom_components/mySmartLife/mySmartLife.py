@@ -1,6 +1,6 @@
 import logging
 from tuya_connector import TUYA_LOGGER, TuyaOpenPulsar, TuyaCloudPulsarTopic
-from custom_components.mySmartLife import myEntitySmartLife
+from .myEntitySmartLife import myEntitySmartLife
 import homeassistant.helpers.service as service_helper
 
 _LOGGER = logging.getLogger(__name__)
@@ -29,7 +29,7 @@ class MessageHandler:
                         sensorName = "%s.%s"%(devId, code)
                         value = statusJson[0]["value"]
                         if sensorName not in self.obj['listSensors'].keys():
-                            myEntity = myEntitySmartLife.myEntitySmartLife( sensorName, value)
+                            myEntity = myEntitySmartLife( sensorName, value)
                             self.obj['addEntities']([myEntity])
                             self.obj['listSensors'][sensorName] = myEntity
                         else:

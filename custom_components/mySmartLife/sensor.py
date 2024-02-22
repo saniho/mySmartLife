@@ -7,6 +7,8 @@ import voluptuous as vol
 
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import PLATFORM_SCHEMA
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
 from homeassistant.const import (
     CONF_TOKEN,
     CONF_NAME,
@@ -31,7 +33,6 @@ from .const import (
 )
 
 _LOGGER = logging.getLogger(__name__)
-DOMAIN = "saniho"
 ICON = "mdi:package-variant-closed"
 SCAN_INTERVAL = timedelta(seconds=1800)
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
@@ -42,13 +43,14 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     }
 )
 
-from . import mySmartLife
+from .mySmartLife import mySmartLife
 
-_mySmartLife = mySmartLife.mySmartLife()
+_mySmartLife = mySmartLife()
 listSensors = []
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the platform."""
+    _LOGGER.info(f"setup_platform")
     name = config.get(CONF_NAME)
 
     accessId = config.get(CONF_ID)
@@ -57,4 +59,28 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     _mySmartLife.setConfig(accessId, accessKey, mqEndPoint)
 
     _mySmartLife.subscribe(listSensors, hass, add_entities)
+    _LOGGER.info(f"setup_platform end")
 
+
+async def async_setup_entry(
+    hass: HomeAssistant, entry: ConfigEntry, async_add_entities
+) -> None:
+    """Set up the mySmartLife sensor platform."""
+
+    _LOGGER.info(f"async_setup_entry")
+    entities = []
+    async_add_entities(
+        entities,
+        False,
+    )
+    _LOGGER.info(f"async_setup_entry end ")
+    _LOGGER.info(f"setup_platform 2 {entry}")
+    _LOGGER.info(f"setup_platform 2 data {entry.data}")
+
+    accessId = entry.data.get(CONF_ID)
+    accessKey = entry.data.get(CONF_KEY)
+    mqEndPoint = entry.data.get(CONF_ENDPOINTKEY)
+    _mySmartLife.setConfig(accessId, accessKey, mqEndPoint)
+
+    _mySmartLife.subscribe(listSensors, hass, async_add_entities)
+    _LOGGER.info(f"setup_platform end2")
