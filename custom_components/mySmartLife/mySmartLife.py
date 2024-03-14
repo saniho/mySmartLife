@@ -38,6 +38,21 @@ class MessageHandler:
                         # reset pour bouton Click / Double_clik
                         if ( code in ['switch_mode1'] ):
                             self.obj['listSensors'][sensorName]._resetDataCall()
+                elif (productKey == "vlzqwckk"):  # thermometre
+                    ## TD : gestion objet generique + gestion unité des mesure
+                    if ( msgJson.get("status")):
+                        statusJson = msgJson.get("status")
+                        _LOGGER.debug( "status : %s / %s / %s" %(datetime.datetime.now(), devId, statusJson[0]))
+                        code = statusJson[0]["code"]
+                        sensorName = "%s.%s"%(devId, code)
+                        value = statusJson[0]["value"]
+                        if sensorName not in self.obj['listSensors'].keys():
+                            myEntity = myEntitySmartLife( sensorName, value)
+                            self.obj['addEntities']([myEntity])
+                            self.obj['listSensors'][sensorName] = myEntity
+                        else:
+                            self.obj['listSensors'][ sensorName ]._changeData(value)
+                            self.obj['listSensors'][ sensorName ]._update()
 
 class mySmartLife:
     def __init__(self):

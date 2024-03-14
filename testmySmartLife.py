@@ -1,5 +1,5 @@
 def testMySmartLife():
-  from custom_components.mySmartLife import mySmartLife, sensorMySmartLife
+  from custom_components.mySmartLife import mySmartLife
 
   _mySmartLife = mySmartLife.mySmartLife()
 
