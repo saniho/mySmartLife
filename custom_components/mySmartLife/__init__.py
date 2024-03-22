@@ -53,6 +53,8 @@ except ImportError:
 
 
 
+from . import mySmartLife
+
 from .const import (  # isort:skip
     DOMAIN,
     PLATFORMS,

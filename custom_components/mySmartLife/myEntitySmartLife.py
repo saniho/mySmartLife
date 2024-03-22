@@ -2,11 +2,18 @@
 import logging
 from collections import defaultdict
 
-from homeassistant.helpers.entity import Entity
 
-from homeassistant.const import (
-    ATTR_ATTRIBUTION,
-)
+try:
+    from homeassistant.helpers.entity import Entity
+
+except ImportError:
+    class Entity:
+        def __init__(self, a, b):
+            # nothing to do
+            pass
+    # si py test
+    pass
+
 from .const import (
     DOMAIN,
     __VERSION__,
@@ -61,7 +68,7 @@ class myEntitySmartLife(Entity):
         """Update device state."""
         self._attributes = {}
         self._attributes.update(self.getDefaultStatusCounts())
-        self.async_write_ha_state()
+        #self.async_write_ha_state()
     @property
     def extra_state_attributes(self):
         """Return the state attributes."""

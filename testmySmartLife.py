@@ -10,8 +10,9 @@ def testMySmartLife():
   accessKey = mon_conteneur["SMARTLIFE"]['ACCESS_KEY']
   mqEndPoint = mon_conteneur["SMARTLIFE"]['MQ_ENDPOINT']
   _mySmartLife.setConfig( accessId, accessKey, mqEndPoint )
+  listSensors = []
+  hass = "Mon hass"
   obj = "Mon objet"
-  _mySmartLife.subscribe(obj)
-
+  _mySmartLife.subscribe(listSensors, hass, objAddEntities = obj, prod=True)
 
 testMySmartLife()

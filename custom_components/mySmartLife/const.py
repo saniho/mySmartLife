@@ -1,12 +1,14 @@
 """ Constants """
 
-from homeassistant.const import Platform
-
+try:
+    from homeassistant.const import Platform
+except:
+    pass
 ISSUE_URL="https://github.com/saniho/mySmartLife/issues"
 
 DOMAIN = "mySmartLife"
 
-__VERSION__ = "1.0.4"
+__VERSION__ = "1.0.5"
 
 __name__ = "mySmartLife"
 
@@ -17,4 +19,7 @@ CONF_KEY = "ACCESS_KEY"
 CONF_ENDPOINTKEY = "MQ_ENDPOINT"
 
 
-PLATFORMS: list[Platform] = [Platform.SENSOR]
+try:
+    PLATFORMS: list[Platform] = [Platform.SENSOR]
+except:
+    PLATFORMS: list = []

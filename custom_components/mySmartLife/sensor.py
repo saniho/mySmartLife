@@ -83,4 +83,5 @@ async def async_setup_entry(
     _mySmartLife.setConfig(accessId, accessKey, mqEndPoint)
 
     _mySmartLife.subscribe(listSensors, hass, async_add_entities)
+    _mySmartLife.addlistener()
     _LOGGER.info(f"setup_platform end2")
